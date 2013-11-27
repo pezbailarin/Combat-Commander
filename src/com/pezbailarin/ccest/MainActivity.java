@@ -11,6 +11,7 @@ public class MainActivity extends Activity
 {
 	Spinner spinnerPaises;
 	Spinner spinnerYears;
+	Spinner spinnerDados;
 	ArrayList<String> items=new ArrayList<String>();
 	ArrayAdapter<String> adapter;
 	
@@ -21,7 +22,8 @@ public class MainActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 		
-		String[] paises={"Germany","Russia", "USA","Italy","France", "UK-Commonwealth"};
+		String[] paises={"Germany","Italia","Francia", "UK-Commonwealth","Russia", "USA"};
+		String[] dados={"2","3","4","5","6","7","8","9","10","11","12"};
 		ArrayAdapter<String> adapterP=new ArrayAdapter<String>(this, 
 			android.R.layout.simple_spinner_dropdown_item,paises);
 		spinnerPaises=(Spinner)findViewById(R.id.spinner1);
@@ -33,6 +35,11 @@ public class MainActivity extends Activity
 		spinnerYears=(Spinner)findViewById(R.id.spinner2);
 		spinnerYears.setAdapter(adapterY);
 		
+		ArrayAdapter<String> adapterD=new ArrayAdapter<String>(this, 
+			android.R.layout.simple_spinner_dropdown_item,dados);
+		spinnerDados=(Spinner)findViewById(R.id.spinner3);
+		spinnerDados.setAdapter(adapterD);
+		
 		ListView lista=(ListView)findViewById(R.id.listView);
 		adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,items);
 		lista.setAdapter(adapter);
@@ -43,25 +50,17 @@ public class MainActivity extends Activity
 	public void mostrar(View v){
 		items.clear();
 		
-	//	Toast.makeText(this,"es el ",Toast.LENGTH_LONG).show();
 		int pais=spinnerPaises.getSelectedItemPosition();
 		int anyo=spinnerYears.getSelectedItemPosition();
-		EditText et=(EditText)findViewById(R.id.editText);
-		int dado=  Integer.parseInt(et.getText().toString())-2;
+		int dado=spinnerDados.getSelectedItemPosition();
 		
 		for(int i=0;i<(SupportTable[pais][dado][anyo].length);i++){
 			if(SupportTable[pais][dado][anyo][i]>0) {
-				Toast.makeText(this,"si "+SupportUnits[pais][i],Toast.LENGTH_SHORT).show();
 				items.add(SupportUnits[pais][i]);
 			}
 		}
 		
 		adapter.notifyDataSetChanged();
-	//	Log.d(getPackageName(), Integer.toString(i));}
-	//	catch (Exception e) {
-	//		Toast.makeText(this, "es el error "+e, Toast.LENGTH_LONG).show();
-	//	}
-	//	Toast.makeText(this,"es el "+i,Toast.LENGTH_LONG).show();
 	}
 	
 	
@@ -189,8 +188,8 @@ public class MainActivity extends Activity
 				{ 6,0,0,0,0,0,0, 0,0,0,0,0,0,3,0, 0,2,0,0,0,1, 0,0,0,0,0 },
 				{ 0,6,0,0,0,0,0, 0,0,0,0,0,0,0,0, 0,2,0,0,0,1, 0,0,0,0,0 }
 			}
-		}
-	//Italiano
+		},
+	{//Italiano
     // 2
 	{
         { 0,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0,0, 2,0,0,0, 3,0,0,0  },  //ojo a los finlandeses
@@ -373,7 +372,7 @@ public class MainActivity extends Activity
 			{ 0,4,0,0,0,0,0,0,0, 0,0,0,0,0,2,0,0, 0,0,0,0, 0,0,3,0 },
 			{ 0,4,0,0,0,0,0,0,0, 0,0,0,0,0,2,0,0, 1,0,0,0, 0,0,3,0 },
 			{ 0,4,0,0,0,0,0,0,0, 0,0,0,0,0,2,0,0, 1,0,0,0, 0,0,3,0 }
-		}
+		},
 		{ // 11
 			{ 0,4,0,0,0,0,0,0,0, 0,0,0,2,0,2,0,1, 0,0,0,0, 0,0,0,0 },
 			{ 0,4,0,0,0,0,0,0,0, 0,0,0,0,2,0,0,1, 0,0,0,0, 0,0,0,0 },
