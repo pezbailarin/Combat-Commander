@@ -6,12 +6,18 @@ import android.view.*;
 import android.widget.*;
 import android.util.*;
 import java.util.*;
+import android.content.Context;
 
 public class MainActivity extends Activity
 {
 	Spinner spinnerPaises;
 	Spinner spinnerYears;
 	Spinner spinnerDados;
+	
+	String[] paises={"Germany","Italia","Francia", "UK-Commonwealth","Russia", "USA"};
+	int[] icPaises={R.drawable.icb_0,R.drawable.icb_1,R.drawable.icb_2,
+		R.drawable.icb_3,R.drawable.icb_4,R.drawable.icb_5,};
+	
 	ArrayList<String> items=new ArrayList<String>();
 	ArrayAdapter<String> adapter;
 	
@@ -22,9 +28,9 @@ public class MainActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 		
-		String[] paises={"Germany","Italia","Francia", "UK-Commonwealth","Russia", "USA"};
+		
 		String[] dados={"2","3","4","5","6","7","8","9","10","11","12"};
-		ArrayAdapter<String> adapterP=new ArrayAdapter<String>(this, 
+		MyAdapter adapterP=new MyAdapter(this, 
 			android.R.layout.simple_spinner_dropdown_item,paises);
 		spinnerPaises=(Spinner)findViewById(R.id.spinner1);
 		spinnerPaises.setAdapter(adapterP);
@@ -63,6 +69,38 @@ public class MainActivity extends Activity
 		adapter.notifyDataSetChanged();
 	}
 	
+	
+	public class MyAdapter extends ArrayAdapter<String>{
+
+        public MyAdapter(Context context, int textViewResourceId,   String[] objects) {
+            super(context, textViewResourceId, objects);
+        }
+
+        @Override
+        public View getDropDownView(int position, View convertView,ViewGroup parent) {
+            return getCustomView(position, convertView, parent);
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            return getCustomView(position, convertView, parent);
+        }
+
+        public View getCustomView(int position, View convertView, ViewGroup parent) {
+
+            LayoutInflater inflater=getLayoutInflater();
+            View row=inflater.inflate(R.layout.list_item, parent, false);
+            TextView label=(TextView)row.findViewById(R.id.textUnit);
+            label.setText(paises[position]);
+
+            //TextView sub=(TextView)row.findViewById(R.id.sub);
+           // sub.setText(subs[position]);
+
+            ImageView icon=(ImageView)row.findViewById(R.id.icono);
+            icon.setImageResource(icPaises[position]);
+            return row;
+		}
+	}
 	
 	private String[][] SupportUnits ={
 	{"Cpt Wehling", "Lt Borbe", "Lt Hutzinger/Bolter", "Sgt Benzing/Grein", "Sgt Pfeiffer", "Cpl Schmidt", "Cpl Guttman", "Wpn Team + LMG", "Wpn Team + HMG", "Wpn Team + Light Mortar", "Wpn Team + Medium Mortar", "Wpn Team + IG 18", "Wpn Team + IG 33", "Pioneer + Flamethrower", "Pioneer + Satchel Charge", "SS Squad", "Elite Rifle Squad", "Parachute/Sturm Squad", "Rifle Squad", "Volksgrenadier Squad", "Conscript Squad", "Radio: 150mm", "Radio: 120mm", "Radio: 105mm", "Radio: 81mm", "Radio: 75mm"},
