@@ -14,7 +14,7 @@ import android.widget.TextView;
 public class ListCustomAdapter extends ArrayAdapter<UnitDetails> {
 	 
     Context context;
- 
+  
     public ListCustomAdapter(Context context, int resourceId,
             List<UnitDetails> items) {
         super(context, resourceId, items);
