@@ -45,14 +45,15 @@ public class MainActivity extends Activity
 		spinnerDados=(Spinner)findViewById(R.id.spinner3);
 		spinnerDados.setAdapter(adapterD);
 		
-		ListView lista=(ListView)findViewById(R.id.listView);
-		adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,items);
-		lista.setAdapter(adapter);
     }
 	
-	//determino y muestro las unidades disponibles
+	/**
+	 * determino y muestro las unidades disponibles
+	 * @param v
+	 */
 	public void mostrar(View v){
-		items.clear();
+		ArrayList<UnitDetails> Detalles=new ArrayList<UnitDetails>();
+		Detalles.clear();
 		
 		int pais=spinnerPaises.getSelectedItemPosition();
 		int anyo=spinnerYears.getSelectedItemPosition();
@@ -60,14 +61,27 @@ public class MainActivity extends Activity
 		
 		for(int i=0;i<(SupportTable[pais][dado][anyo].length);i++){
 			if(SupportTable[pais][dado][anyo][i]>0) {
-				items.add(SupportUnits[pais][i]);
+				UnitDetails unidad=new UnitDetails();
+				unidad.setNombre(SupportUnits[pais][i]);
+				unidad.setIcon(UnitIcons[pais][i]);
+				Detalles.add(unidad);
+				//items.add(SupportUnits[pais][i]);
 			}
 		}
-		//	el adapter provocael redibujado del listView
-		adapter.notifyDataSetChanged();
+		
+		ListView lista=(ListView)findViewById(R.id.listView);
+		lista.setAdapter(new ListCustomAdapter(this,R.layout.list_item, Detalles));
+		
 	}
 	
-	// adaptador personal para spinner
+	
+	
+	/**
+	 * 
+	 *  adaptador personal para spinner
+	 * @author Cesar
+	 *
+	 */
 	public class MiSpinnerAdapter extends ArrayAdapter<String>{
 
         public MiSpinnerAdapter(Context context, int textViewResourceId,   String[] objects) {
@@ -97,7 +111,6 @@ public class MainActivity extends Activity
 		}
 	}
 	
-	// adaptador personal para listview
 	
 	
 	
