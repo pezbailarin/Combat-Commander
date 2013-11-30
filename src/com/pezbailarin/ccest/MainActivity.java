@@ -14,7 +14,8 @@ public class MainActivity extends Activity
 	Spinner spinnerYears;
 	Spinner spinnerDados;
 	
-	String[] paises={"Germany","Italia","Francia", "UK-Commonwealth","Russia", "USA"};
+	String[] paises={"Germany","Italy","France", "UK","Russia", "USA"};
+	String [] subtitulo={"", "and axis minors", "and allied minors", "and Commonwealth", "", ""};
 	int[] icPaises={R.drawable.icb_0,R.drawable.icb_1,R.drawable.icb_2,
 		R.drawable.icb_3,R.drawable.icb_4,R.drawable.icb_5,};
 	
@@ -52,6 +53,8 @@ public class MainActivity extends Activity
 	 * @param v
 	 */
 	public void mostrar(View v){
+		int[] colores={R.color.germany, R.color.italy,R.color.france, R.color.uk, R.color.rusia, R.color.usa};
+		
 		ArrayList<UnitDetails> Detalles=new ArrayList<UnitDetails>();
 		Detalles.clear();
 		
@@ -70,6 +73,7 @@ public class MainActivity extends Activity
 		}
 		
 		ListView lista=(ListView)findViewById(R.id.listView);
+		//lista.setBackgroundColor(R.color.rusia);
 		lista.setAdapter(new ListCustomAdapter(this,R.layout.list_item, Detalles));
 		
 	}
