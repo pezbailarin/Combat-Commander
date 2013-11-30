@@ -13,8 +13,7 @@
 		<Spinner
 			android:id="@+id/spinner1"
 			android:layout_width="match_parent"
-       		android:layout_height="wrap_content"
-			android:hint="Selecciona un pais"/>	
+       		android:layout_height="wrap_content"/>	
 		<Spinner
 			android:id="@+id/spinner2"
 			android:layout_width="match_parent"
@@ -28,7 +27,7 @@
 			android:id="@+id/boton"
 			android:layout_width="match_parent"
     	    android:layout_height="wrap_content"
-			android:text="Go"
+			android:text="@string/go"
 			android:onClick="mostrar"/>
 	</LinearLayout>
 
@@ -36,7 +35,8 @@
 		android:id="@+id/listView"
 		android:paddingTop="2dp"
 		android:layout_width="0px"
-		android:layout_height="match_parent"
+		android:layout_height="match_parent"		
+		android:animateLayoutChanges="true"
 		android:layout_weight="4.5"/>
 
     

@@ -4,7 +4,7 @@ import android.app.*;
 import android.os.*;
 import android.view.*;
 import android.widget.*;
-import android.util.*;
+//import android.util.*;
 import java.util.*;
 import android.content.Context;
 
@@ -53,7 +53,6 @@ public class MainActivity extends Activity
 	 * @param v
 	 */
 	public void mostrar(View v){
-		int[] colores={R.color.germany, R.color.italy,R.color.france, R.color.uk, R.color.rusia, R.color.usa};
 		
 		ArrayList<UnitDetails> Detalles=new ArrayList<UnitDetails>();
 		Detalles.clear();
@@ -62,20 +61,25 @@ public class MainActivity extends Activity
 		int anyo=spinnerYears.getSelectedItemPosition();
 		int dado=spinnerDados.getSelectedItemPosition();
 		
+		ListView lista=(ListView)findViewById(R.id.listView);
+		ListCustomAdapter ListAdapter = new ListCustomAdapter(this,R.layout.list_item, Detalles);
+		lista.setAdapter(ListAdapter);
+				
 		for(int i=0;i<(SupportTable[pais][dado][anyo].length);i++){
 			if(SupportTable[pais][dado][anyo][i]>0) {
 				UnitDetails unidad=new UnitDetails();
 				unidad.setNombre(SupportUnits[pais][i]);
 				unidad.setIcon(UnitIcons[pais][i]);
 				Detalles.add(unidad);
-				//items.add(SupportUnits[pais][i]);
+				ListAdapter.notifyDataSetChanged();				
 			}
 		}
 		
-		ListView lista=(ListView)findViewById(R.id.listView);
-		//lista.setBackgroundColor(R.color.rusia);
-		lista.setAdapter(new ListCustomAdapter(this,R.layout.list_item, Detalles));
-		
+		if (Detalles.isEmpty()) {
+			UnitDetails unidad=new UnitDetails();
+			unidad.setNombre(getString(R.string.ninguna_unidad_disponible));
+			Detalles.add(unidad);
+		}
 	}
 	
 	
@@ -106,8 +110,12 @@ public class MainActivity extends Activity
 
             LayoutInflater inflater=getLayoutInflater();
             View row=inflater.inflate(R.layout.spinner_item, parent, false);
+            
             TextView label=(TextView)row.findViewById(R.id.textPais);
             label.setText(paises[position]);
+            
+            TextView extra=(TextView)row.findViewById(R.id.textExtra);
+            extra.setText(subtitulo[position]);
 
             ImageView icon=(ImageView)row.findViewById(R.id.iconoPais);
             icon.setImageResource(icPaises[position]);

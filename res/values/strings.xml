@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">CCE Support Table</string>
+    <string name="go">Go</string>
+    <string name="ninguna_unidad_disponible">Ninguna unidad disponible</string>
+    <string name="year">Year:</string>
+    <string name="dado">Die roll:</string>
+    <string name="nation">Nation</string>
+    <string name="nation_">Nation:</string>
 
 </resources>
