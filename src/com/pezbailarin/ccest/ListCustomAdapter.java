@@ -25,6 +25,7 @@ public class ListCustomAdapter extends ArrayAdapter<UnitDetails> {
     private class ViewHolder {
         ImageView imageView;
         TextView txtTitle;
+        TextView txtExtra;
     }
  
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -36,6 +37,7 @@ public class ListCustomAdapter extends ArrayAdapter<UnitDetails> {
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.list_item, null);
             holder = new ViewHolder();
+            holder.txtExtra = (TextView) convertView.findViewById(R.id.textUExtra);
             holder.txtTitle = (TextView) convertView.findViewById(R.id.textUnidad);
             holder.imageView = (ImageView) convertView.findViewById(R.id.iconoUnidad);
             convertView.setTag(holder);
@@ -43,6 +45,7 @@ public class ListCustomAdapter extends ArrayAdapter<UnitDetails> {
             holder = (ViewHolder) convertView.getTag();
 
         holder.txtTitle.setText(rowItem.getNombre());
+        holder.txtExtra.setText(rowItem.getExtra());
         holder.imageView.setImageResource(rowItem.getIcon());
  
         return convertView;

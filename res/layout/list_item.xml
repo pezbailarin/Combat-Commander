@@ -7,16 +7,29 @@
 		android:layout_width="64dp"
 		android:layout_height="64dp"
 		android:padding="1dp"
+		android:src="@drawable/st0b"
 		android:layout_centerVertical="true"/>
 	<TextView
 		android:id="@+id/textUnidad"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:textSize="18sp"
-		android:paddingLeft="5dp"
-		android:layout_toRightOf="@id/iconoUnidad"
-		android:layout_centerVertical="true"/>
-
+		android:paddingLeft="75dp"
+		android:paddingBottom="10dp"
+		android:layout_above="@+id/textUExtra"
+		android:layout_alignParentLeft="true"
+		android:text="Texto"
+		android:layout_alignParentTop="@id/iconoUnidad"/>
+	<TextView
+	    android:id="@+id/textUExtra"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignBottom="@+id/iconoUnidad"
+	    android:paddingBottom="4dp"
+	    android:text="hola"
+	    android:layout_alignLeft="@+id/textUnidad"
+	    android:layout_marginLeft="75dp"
+	    android:textColor="#777777"/>
 </RelativeLayout>
 	
 	
