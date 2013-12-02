@@ -5,6 +5,7 @@ public class UnitDetails
 	private int icon;
 	private String nombre;
 	private String extra;
+	private int coste;
 
 	public void setIcon(int i){
 		icon=i;
@@ -23,5 +24,11 @@ public class UnitDetails
 	}
 	public void setExtra(String extra) {
 		this.extra = extra;
+	}
+	public int getCoste() {
+		return coste;
+	}
+	public void setCoste(int coste) {
+		this.coste = coste;
 	}
 }

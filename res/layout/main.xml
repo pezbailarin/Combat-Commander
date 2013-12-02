@@ -8,7 +8,7 @@
 	    android:id="@+id/textView1"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:text="@string/nation_" />		
+	    android:text="@string/nation" />		
 	<Spinner 
 		android:id="@+id/spinner1"
 		android:layout_width="match_parent"

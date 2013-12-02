@@ -1,16 +1,30 @@
+//TODO: cambiar las imágenes por otras mas grandes, reducirlas en el listview pero no en el dialogo ampliado
+//TODO: añadir imágenes dobles para los wpn team + weapon; mostrarlas desplegadas en el dialogo
+//TODO: mostrar las armas americanas con las unidades francesas que las usan
+
 package com.pezbailarin.ccest;
 
-import android.app.*;
-import android.os.*;
-import android.view.*;
-import android.widget.*;
+import java.util.ArrayList;
 
-//import android.util.*;
-import java.util.*;
-
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
 
 public class MainActivity extends Activity {
+	static final String CLAVE="IntentKey";
 	ArrayList<UnitDetails> Detalles=new ArrayList<UnitDetails>();
 	ListCustomAdapter miListAdapter;
 	
@@ -53,6 +67,32 @@ public class MainActivity extends Activity {
 		ListView lista=(ListView)findViewById(R.id.listView);		
 		lista.setAdapter(miListAdapter);		
 		miListAdapter.notifyDataSetChanged();
+		
+		lista.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position,
+					long id) {
+				//no quiero mostrar el diálogo cuando no hay unidades elegibles
+				if(Detalles.get(position).getCoste()>0) {
+					//Toast.makeText(getApplicationContext(), "nombre "+Detalles.get(position).getNombre(), Toast.LENGTH_LONG).show();
+					Intent intent=new Intent(getApplicationContext(), MiDialogoActivity.class);
+					intent.putExtra("NOMBRE", Detalles.get(position).getNombre());
+					intent.putExtra("EXTRAS", Detalles.get(position).getExtra());
+					//veamos si el icono es doble
+					int ico=Detalles.get(position).getIcon();
+					String name = getResources().getResourceEntryName(ico);
+					if(name.endsWith("2")==true) {
+						name=name.substring(0, name.length()-1)+"1";
+						ico=getResources().getIdentifier(name, "drawable", getPackageName());						
+					}
+							
+					intent.putExtra("ICONO", ico);
+					intent.putExtra("COSTE", Detalles.get(position).getCoste());
+					startActivity(intent);			    
+				}
+			}
+		});
     }
     
 
@@ -85,6 +125,7 @@ public class MainActivity extends Activity {
 				if(pais==2 && i==12 && dado ==9){unidad.setExtra("Polish only");}
 				if(pais==2 && i==13 && dado ==9){unidad.setExtra("French only");}
 				unidad.setNombre(SupportUnits[pais][i]);
+				unidad.setCoste(SupportTable[pais][dado][anyo][i]);
 				Detalles.add(unidad);
 				miListAdapter.notifyDataSetChanged();				
 			}
@@ -141,8 +182,6 @@ public class MainActivity extends Activity {
 	}
 	
 	
-
-	
 	//aquí empiezan los datos
 	private String[][] SupportUnits ={
 	{"Cpt Wehling", "Lt Borbe", "Lt Hutzinger/Bolter", "Sgt Benzing/Grein", "Sgt Pfeiffer", "Cpl Schmidt", "Cpl Guttman", "Wpn Team + LMG", "Wpn Team + HMG", "Wpn Team + Light Mortar", "Wpn Team + Medium Mortar", "Wpn Team + IG 18", "Wpn Team + IG 33", "Pioneer + Flamethrower", "Pioneer + Satchel Charge", "SS Squad", "Elite Rifle Squad", "Parachute/Sturm Squad", "Rifle Squad", "Volksgrenadier Squad", "Conscript Squad", "Radio: 150mm", "Radio: 120mm", "Radio: 105mm", "Radio: 81mm", "Radio: 75mm"},
@@ -154,10 +193,10 @@ public class MainActivity extends Activity {
 	};
 	
 	int[][] UnitIcons = {
-		{R.drawable.st0a,R.drawable.st0b,R.drawable.st0c,R.drawable.st0d,R.drawable.st0e,R.drawable.st0f,R.drawable.st0g,R.drawable.st0h,R.drawable.st0i,R.drawable.st0j,R.drawable.st0k,R.drawable.st0l,R.drawable.st0m,R.drawable.st0n,R.drawable.st0o,R.drawable.st0p,R.drawable.st0q,R.drawable.st0r,R.drawable.st0s,R.drawable.st0t,R.drawable.st0u,R.drawable.st0v,R.drawable.st0w,R.drawable.st0x,R.drawable.st0y,R.drawable.st0z},
-		{R.drawable.st1a,R.drawable.st1b,R.drawable.st1c,R.drawable.st1d,R.drawable.st1e,R.drawable.st1f,R.drawable.st1g,R.drawable.st1h,R.drawable.st1i,R.drawable.st1j,R.drawable.st1k,R.drawable.st1l,R.drawable.st1m,R.drawable.st1n,R.drawable.st1o,R.drawable.st1p,R.drawable.st1pq,R.drawable.st1q,R.drawable.st1r,R.drawable.st1s,R.drawable.st1t,R.drawable.st1u,R.drawable.st1v,R.drawable.st1w,R.drawable.st1x,R.drawable.st1y},
-		{R.drawable.st2a,R.drawable.st2b,R.drawable.st2c,R.drawable.st2d,R.drawable.st2e,R.drawable.st2f,R.drawable.st2g,R.drawable.st2h,R.drawable.st2i,R.drawable.st2j,R.drawable.st2k,R.drawable.st2l,R.drawable.st2m,R.drawable.st2n,R.drawable.st2o,R.drawable.st2p,R.drawable.st2q,R.drawable.st2r,R.drawable.st2s,R.drawable.st2t,R.drawable.st2u,R.drawable.st2v,R.drawable.st2w,R.drawable.st2x,R.drawable.st2y},
-		{R.drawable.st3a,R.drawable.st3b,R.drawable.st3c,R.drawable.st3d,R.drawable.st3e,R.drawable.st3f,R.drawable.st3g,R.drawable.st3h,R.drawable.st3i,R.drawable.st3j,R.drawable.st3k,R.drawable.st3l,R.drawable.st3m,R.drawable.st3n,R.drawable.st3o,R.drawable.st3p,R.drawable.st3q,R.drawable.st3r,R.drawable.st3s,R.drawable.st3t,R.drawable.st3u,R.drawable.st3v,R.drawable.st3w,R.drawable.st3x,R.drawable.st3y},
+		{R.drawable.st0a,R.drawable.st0b,R.drawable.st0c,R.drawable.st0d,R.drawable.st0e,R.drawable.st0f,R.drawable.st0g,R.drawable.st0h2,R.drawable.st0i2,R.drawable.st0j2,R.drawable.st0k2,R.drawable.st0l2,R.drawable.st0m2,R.drawable.st0n2,R.drawable.st0o2,R.drawable.st0p,R.drawable.st0q,R.drawable.st0r,R.drawable.st0s,R.drawable.st0t,R.drawable.st0u,R.drawable.st0v,R.drawable.st0w,R.drawable.st0x,R.drawable.st0y,R.drawable.st0z},
+		{R.drawable.st1a,R.drawable.st1b,R.drawable.st1c,R.drawable.st1d,R.drawable.st1e,R.drawable.st1f,R.drawable.st1g,R.drawable.st1h,R.drawable.st1i,R.drawable.st1j2,R.drawable.st1k2,R.drawable.st1l2,R.drawable.st1m2,R.drawable.st1n2,R.drawable.st1o2,R.drawable.st1p2,R.drawable.st1pq2,R.drawable.st1q2,R.drawable.st1r,R.drawable.st1s,R.drawable.st1t,R.drawable.st1u,R.drawable.st1v,R.drawable.st1w,R.drawable.st1x,R.drawable.st1y},
+		{R.drawable.st2a,R.drawable.st2b,R.drawable.st2c,R.drawable.st2d,R.drawable.st2e,R.drawable.st2f,R.drawable.st2g,R.drawable.st2h,R.drawable.st2i,R.drawable.st2j2,R.drawable.st2k2,R.drawable.st2l2,R.drawable.st2m2,R.drawable.st2n2,R.drawable.st2o2,R.drawable.st2p2,R.drawable.st2q2,R.drawable.st2r,R.drawable.st2s,R.drawable.st2t,R.drawable.st2u,R.drawable.st2v,R.drawable.st2w,R.drawable.st2x,R.drawable.st2y},
+		{R.drawable.st3a,R.drawable.st3b,R.drawable.st3c,R.drawable.st3d,R.drawable.st3e,R.drawable.st3f,R.drawable.st3g,R.drawable.st3h,R.drawable.st3i,R.drawable.st3j2,R.drawable.st3k2,R.drawable.st3l2,R.drawable.st3m2,R.drawable.st3n2,R.drawable.st3o2,R.drawable.st3p2,R.drawable.st3q,R.drawable.st3r,R.drawable.st3s,R.drawable.st3t,R.drawable.st3u,R.drawable.st3v,R.drawable.st3w,R.drawable.st3x,R.drawable.st3y},
 		{R.drawable.st4a,R.drawable.st4b,R.drawable.st4c,R.drawable.st4d,R.drawable.st4e,R.drawable.st4f,R.drawable.st4g,R.drawable.st4h,R.drawable.st4i,R.drawable.st4j,R.drawable.st4k,R.drawable.st4l,R.drawable.st4m,R.drawable.st4n,R.drawable.st4o,R.drawable.st4p,R.drawable.st4q,R.drawable.st4r,R.drawable.st4s,R.drawable.st4t,R.drawable.st4u,R.drawable.st4v,R.drawable.st4w,R.drawable.st4x,R.drawable.st4y,R.drawable.st4z,R.drawable.st4zz},
 		{R.drawable.st5a,R.drawable.st5b,R.drawable.st5c,R.drawable.st5d,R.drawable.st5e,R.drawable.st5f,R.drawable.st5g,R.drawable.st5h,R.drawable.st5i,R.drawable.st5j,R.drawable.st5k,R.drawable.st5l,R.drawable.st5m,R.drawable.st5n,R.drawable.st5o,R.drawable.st5p,R.drawable.st5q,R.drawable.st5r,R.drawable.st5s,R.drawable.st5t,R.drawable.st5u,R.drawable.st5w,R.drawable.st5x,R.drawable.st5y,R.drawable.st5z,R.drawable.st5zz}};
 	

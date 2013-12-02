@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">CCE Support Table</string>
     <string name="go">Go</string>
     <string name="ninguna_unidad_disponible">No units available</string>
     <string name="year">Year:</string>
     <string name="dado">Die roll:</string>
-    <string name="nation">Nation</string>
-    <string name="nation_">Nation:</string>
+    <string name="nation">Nation:</string>
     <string name="only_if_playing_a_finnish_oob">Only if playing a finnish OOB</string>
     <string name="use_the_american_version_of_the_indicated_weapon">Use  american version of weapon</string>
+    <string name="title_activity_mi_dialogo">Details</string>
+    <string name="_ok_">" OK "</string>
 
 </resources>
