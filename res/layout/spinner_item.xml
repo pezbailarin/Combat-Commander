@@ -1,33 +1,38 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="horizontal">
-	<ImageView
-		android:id="@+id/iconoPais"
-		android:layout_width="39dp"
-		android:layout_height="39dp"
-		android:padding="1dp"
-		android:src="@drawable/icb_0"
-		android:layout_centerVertical="true"/>
+    android:gravity="top"
+    android:orientation="horizontal" >
 
-	<TextView
-	    android:id="@+id/textPais"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:layout_above="@+id/textExtra"
-	    android:layout_alignParentLeft="true"
-	    android:paddingLeft="55dp"
-	    android:textSize="18sp" />
-	<TextView
-	    android:id="@+id/textExtra"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_alignBottom="@+id/iconoPais"
-	    android:layout_alignLeft="@+id/textPais"
-	    android:layout_marginLeft="55dp"
-	    android:textColor="#777777"/>
+    <ImageView
+        android:id="@+id/iconoPais"
+        android:layout_width="39dp"
+        android:layout_height="39dp"
+        android:layout_centerVertical="true"
+        android:padding="1dp"
+        android:src="@drawable/icb_0" />
 
-    
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+		android:layout_alignTop="@+id/iconoPais"
+		android:layout_marginLeft="55dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textPais"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Italy"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textExtra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Solo tienes lulo"
+            android:textColor="#777777" />
+    </LinearLayout>
+
 </RelativeLayout>
-	
-	

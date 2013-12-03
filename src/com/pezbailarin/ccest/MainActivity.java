@@ -69,7 +69,8 @@ public class MainActivity extends Activity {
 		miListAdapter.notifyDataSetChanged();
 		
 		lista.setOnItemClickListener(new OnItemClickListener() {
-
+			//al pulsar un item del listview abrir el dialogo de detalle;
+			//pongo toda la info en extras del intent que uso para abrir la nueva activity
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position,
 					long id) {
@@ -82,10 +83,11 @@ public class MainActivity extends Activity {
 					//veamos si el icono es doble
 					int ico=Detalles.get(position).getIcon();
 					String name = getResources().getResourceEntryName(ico);
-					if(name.endsWith("2")==true) {
-						name=name.substring(0, name.length()-1)+"1";
+/*					//si la unidad termina en 'd' cambio el icono
+					if(name.endsWith("d")==true) {
+						name=name.substring(0, name.length()-1);
 						ico=getResources().getIdentifier(name, "drawable", getPackageName());						
-					}
+					}*/
 							
 					intent.putExtra("ICONO", ico);
 					intent.putExtra("COSTE", Detalles.get(position).getCoste());
@@ -184,20 +186,20 @@ public class MainActivity extends Activity {
 	
 	//aquí empiezan los datos
 	private String[][] SupportUnits ={
-	{"Cpt Wehling", "Lt Borbe", "Lt Hutzinger/Bolter", "Sgt Benzing/Grein", "Sgt Pfeiffer", "Cpl Schmidt", "Cpl Guttman", "Wpn Team + LMG", "Wpn Team + HMG", "Wpn Team + Light Mortar", "Wpn Team + Medium Mortar", "Wpn Team + IG 18", "Wpn Team + IG 33", "Pioneer + Flamethrower", "Pioneer + Satchel Charge", "SS Squad", "Elite Rifle Squad", "Parachute/Sturm Squad", "Rifle Squad", "Volksgrenadier Squad", "Conscript Squad", "Radio: 150mm", "Radio: 120mm", "Radio: 105mm", "Radio: 81mm", "Radio: 75mm"},
+	{"Cpt Wehling", "Lt Borbe", "Lt Hutzingeror Lt. Bolter", "Sgt Benzing or Sgt. Grein", "Sgt Pfeiffer", "Cpl Schmidt", "Cpl Guttman", "Wpn Team + LMG", "Wpn Team + HMG", "Wpn Team + Light Mortar", "Wpn Team + Medium Mortar", "Wpn Team + IG 18", "Wpn Team + IG 33", "Pioneer + Flamethrower", "Pioneer + Satchel Charge", "SS Squad", "Elite Rifle Squad", "Parachute/Sturm Squad", "Rifle Squad", "Volksgrenadier Squad", "Conscript Squad", "Radio: 150mm", "Radio: 120mm", "Radio: 105mm", "Radio: 81mm", "Radio: 75mm"},
 	{"Cpt Antonile", "Lt Romero", "Lt Zanella", "Sgt Minutello", "Sgt Ruggiero", "Sgt Carboni", "Cpl Pagliari", "Cpl Farinato", "Cpl Castania", "Wpn Team + LMG","Wpn Team + MMG", "Wpn Team + HMG", "Wpn Team + Brixia Mortar", "Wpn Team + Medium Mortar", "Wpn Team + Mountain Gun","Gustatori + Flamethrower", "Guastatori + Satchel Charge", "Elite Team + Mol. cocktail", "Sissi Squad", "Bersaglieri Squad", "Fucilieri Squad", "Blackshirt Squad", "Radio: 150mm",  "Radio: 105mm", "Radio: 81mm","Radio: 75mm"},
-	{"Cpt Gough", "Lt Alier", "Lt Levasseur", "Sgt Fache", "Sgt Delvoie", "Sgt Picard", "Sgt Vernejout", "Cpl Besson", "Cpl Benoit", "Wpn Team + LMG", "Wpn Team + HMG", "Wpn Team + .50cal (US) MG","Wpn Team + 50mm Mortar","Wpn Team + 60mm Mortar","Wpn Team + Medium Mortar", "Wpn Team + French 75","Elite Team + Satchel Charge", "BAR Squad", "Legionnaire Squad", "Chasseur Squad", "Reservist Squad", "Radio: 150mm",  "Radio: 105mm", "Radio: 81mm", "Radio: 75mm" },
+	{"Cpt Gough", "Lt Alier", "Lt Levasseur", "Sgt Fache", "Sgt Delvoie", "Sgt Picard", "Sgt Vernejout", "Cpl Besson", "Cpl Benoit", "Wpn Team + LMG", "Wpn. Team + HMG", "Wpn Team + .50cal (US) MG","Wpn Team + 50mm Mortar","Wpn Team + 60mm Mortar","Wpn Team + Medium Mortar", "Wpn Team + French 75","Elite Team + Satchel Charge", "BAR Squad", "Legionnaire Squad", "Chasseur Squad", "Reservist Squad", "Radio: 150mm",  "Radio: 105mm", "Radio: 81mm", "Radio: 75mm" },
 	{"Cpt Iggleby", "Lt Dan", "Lt Wallace", "Lt O'Malley", "Sgt Kwan", "Sgt Foley", "Sgt Crowe", "Cpl Isway", "Cpl Cork", "Wpn Team + LMG", "Wpn Team + HMG", "Wpn Team + Light Mortar", "Wpn Team + Medium Mortar", "Wpn Team + 25 Pounder", "Engineer + Flamethrower", "Engineer + Satchel Charge", "Airborne Squad", "Guards Squad", "Line Squad", "Territorial Squad", "Radio: 183mm", "Radio: 152mm", "Radio: 140mm", "Radio: 114mm", "Radio: 88mm", "Radio: 76mm" },
 	{"Cpt Egorov", "Lt Ostroumov", "Lt Bijak", "Sgt Pyotor", "Sgt Rodimtsev", "Sgt Kaminsky", "Cpl Anishchik", "Cpl Kutikov", "Cpl Denikin", "Wpn Team + LMG", "Wpn Team + MMG", "Wpn Team + HMG", "Wpn Team + .50cal MG","Wpn Team + Light Mortar", "Wpn Team + Medium Mortar", "Wpn Team + Infantry Gun", "Assault + Flamethrower", "Assault + Satchel Charge", "Guards Rifle Squad", "Guards SMG Squad", "Rifle Squad", "SMG Squad", "Militia Squad", "Radio: 152mm",  "Radio: 122mm", "Radio: 82mm", "Radio: 76mm" },
 	{"Cpt Sitner","Lt Esparza", "Lt Thomas", "Sgt Bergstrom", "Sgt Fuller", "Sgt Elkheart", "Sgt Goziak", "Cpl Jensen", "Cpl Twells", "Wpn Team + MMG", "Wpn Team + HMG","Wpn Team + .50cal MG","Wpn Team + Light Mortar", "Wpn Team + Medium Mortar", "Wpn Team + Pak Howitzer", "Engineer + Flamethrower", "Engineer + Satchel Charge", "Paratroop Squad", "Elite Squad", "Line Squad", "Green Squad", "Radio: 203mm", "Radio: 155mm", "Radio: 105mm", "Radio: 81mm", "Radio: 75mm"}
 	};
 	
 	int[][] UnitIcons = {
-		{R.drawable.st0a,R.drawable.st0b,R.drawable.st0c,R.drawable.st0d,R.drawable.st0e,R.drawable.st0f,R.drawable.st0g,R.drawable.st0h2,R.drawable.st0i2,R.drawable.st0j2,R.drawable.st0k2,R.drawable.st0l2,R.drawable.st0m2,R.drawable.st0n2,R.drawable.st0o2,R.drawable.st0p,R.drawable.st0q,R.drawable.st0r,R.drawable.st0s,R.drawable.st0t,R.drawable.st0u,R.drawable.st0v,R.drawable.st0w,R.drawable.st0x,R.drawable.st0y,R.drawable.st0z},
-		{R.drawable.st1a,R.drawable.st1b,R.drawable.st1c,R.drawable.st1d,R.drawable.st1e,R.drawable.st1f,R.drawable.st1g,R.drawable.st1h,R.drawable.st1i,R.drawable.st1j2,R.drawable.st1k2,R.drawable.st1l2,R.drawable.st1m2,R.drawable.st1n2,R.drawable.st1o2,R.drawable.st1p2,R.drawable.st1pq2,R.drawable.st1q2,R.drawable.st1r,R.drawable.st1s,R.drawable.st1t,R.drawable.st1u,R.drawable.st1v,R.drawable.st1w,R.drawable.st1x,R.drawable.st1y},
-		{R.drawable.st2a,R.drawable.st2b,R.drawable.st2c,R.drawable.st2d,R.drawable.st2e,R.drawable.st2f,R.drawable.st2g,R.drawable.st2h,R.drawable.st2i,R.drawable.st2j2,R.drawable.st2k2,R.drawable.st2l2,R.drawable.st2m2,R.drawable.st2n2,R.drawable.st2o2,R.drawable.st2p2,R.drawable.st2q2,R.drawable.st2r,R.drawable.st2s,R.drawable.st2t,R.drawable.st2u,R.drawable.st2v,R.drawable.st2w,R.drawable.st2x,R.drawable.st2y},
+		{R.drawable.stg1, R.drawable.stg2, R.drawable.stg3d, R.drawable.stg4d, R.drawable.stg5, R.drawable.stg6, R.drawable.stg7, R.drawable.stg8d, R.drawable.stg9d, R.drawable.stg10d, R.drawable.stg11d, R.drawable.stg12d, R.drawable.stg13d, R.drawable.stg14d, R.drawable.stg15d, R.drawable.stg16, R.drawable.stg17, R.drawable.stg18, R.drawable.stg19, R.drawable.stg20, R.drawable.stg21, R.drawable.stg22r, R.drawable.stg23r, R.drawable.stg24r, R.drawable.stg25r, R.drawable.stg26r},
+		{R.drawable.sti1, R.drawable.sti2, R.drawable.sti3, R.drawable.sti4, R.drawable.sti5, R.drawable.sti6, R.drawable.sti7, R.drawable.sti8, R.drawable.sti9, R.drawable.sti10d, R.drawable.sti11d, R.drawable.sti12d, R.drawable.sti13d, R.drawable.sti14d, R.drawable.sti15d, R.drawable.sti16d, R.drawable.sti17d, R.drawable.sti18d, R.drawable.sti19, R.drawable.sti20, R.drawable.sti21, R.drawable.sti22, R.drawable.sti23r, R.drawable.sti24r, R.drawable.sti25r, R.drawable.sti26r},
+		{R.drawable.stf1, R.drawable.stf2, R.drawable.stf3, R.drawable.stf4, R.drawable.stf5, R.drawable.stf6, R.drawable.stf7, R.drawable.stf8, R.drawable.stf9, R.drawable.stf10d, R.drawable.stf11d, R.drawable.stf12d, R.drawable.stf13d, R.drawable.stf14d, R.drawable.stf15d, R.drawable.stf16d, R.drawable.stf17d, R.drawable.stf18, R.drawable.stf19, R.drawable.stf20, R.drawable.stf21, R.drawable.stf22r, R.drawable.stf23r, R.drawable.stf24r, R.drawable.stf25r},
 		{R.drawable.st3a,R.drawable.st3b,R.drawable.st3c,R.drawable.st3d,R.drawable.st3e,R.drawable.st3f,R.drawable.st3g,R.drawable.st3h,R.drawable.st3i,R.drawable.st3j2,R.drawable.st3k2,R.drawable.st3l2,R.drawable.st3m2,R.drawable.st3n2,R.drawable.st3o2,R.drawable.st3p2,R.drawable.st3q,R.drawable.st3r,R.drawable.st3s,R.drawable.st3t,R.drawable.st3u,R.drawable.st3v,R.drawable.st3w,R.drawable.st3x,R.drawable.st3y},
-		{R.drawable.st4a,R.drawable.st4b,R.drawable.st4c,R.drawable.st4d,R.drawable.st4e,R.drawable.st4f,R.drawable.st4g,R.drawable.st4h,R.drawable.st4i,R.drawable.st4j,R.drawable.st4k,R.drawable.st4l,R.drawable.st4m,R.drawable.st4n,R.drawable.st4o,R.drawable.st4p,R.drawable.st4q,R.drawable.st4r,R.drawable.st4s,R.drawable.st4t,R.drawable.st4u,R.drawable.st4v,R.drawable.st4w,R.drawable.st4x,R.drawable.st4y,R.drawable.st4z,R.drawable.st4zz},
+		{R.drawable.sts1, R.drawable.sts2, R.drawable.sts3, R.drawable.sts4, R.drawable.sts5, R.drawable.sts6, R.drawable.sts7, R.drawable.sts8, R.drawable.sts9, R.drawable.sts10d, R.drawable.sts11d, R.drawable.sts12d, R.drawable.sts13d, R.drawable.sts14d, R.drawable.sts15d, R.drawable.sts16d, R.drawable.sts17d, R.drawable.sts18d, R.drawable.sts19, R.drawable.sts20, R.drawable.sts21, R.drawable.sts22, R.drawable.sts23, R.drawable.sts24r, R.drawable.sts25r, R.drawable.sts26r, R.drawable.sts27r},
 		{R.drawable.st5a,R.drawable.st5b,R.drawable.st5c,R.drawable.st5d,R.drawable.st5e,R.drawable.st5f,R.drawable.st5g,R.drawable.st5h,R.drawable.st5i,R.drawable.st5j,R.drawable.st5k,R.drawable.st5l,R.drawable.st5m,R.drawable.st5n,R.drawable.st5o,R.drawable.st5p,R.drawable.st5q,R.drawable.st5r,R.drawable.st5s,R.drawable.st5t,R.drawable.st5u,R.drawable.st5w,R.drawable.st5x,R.drawable.st5y,R.drawable.st5z,R.drawable.st5zz}};
 	
 	private int[][][][] SupportTable= {
