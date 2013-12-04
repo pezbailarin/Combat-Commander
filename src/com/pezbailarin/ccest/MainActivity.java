@@ -121,7 +121,11 @@ public class MainActivity extends Activity {
 				//radio finlandesa
 				if(pais==1 && i==22 && dado==0) {unidad.setExtra(getString(R.string.only_if_playing_a_finnish_oob));} 
 				//paises menores aliados
-				if(pais==2 && i==10 && (dado==5 || dado==7)) {unidad.setExtra(getString(R.string.use_the_american_version_of_the_indicated_weapon));}
+				if(pais==2 && i==10 && (dado==5 || dado==7)) {
+					//FRANCIA: Weapon Team + HMG USA
+					unidad.setExtra(getString(R.string.use_the_american_version_of_the_indicated_weapon));
+					unidad.setIcon(R.drawable.stf11bd);
+				}
 				if (pais==2 && i==11) {unidad.setExtra(getString(R.string.use_the_american_version_of_the_indicated_weapon));}
 				if(pais ==2 && i==12 && dado==7){unidad.setExtra("Belgian only");}
 				if(pais==2 && i==12 && dado ==9){unidad.setExtra("Polish only");}
