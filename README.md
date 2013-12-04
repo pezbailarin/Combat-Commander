@@ -9,4 +9,4 @@ Está realizada únicamente con fines educativos, para aprender a hacer programa
 
 Utiliza la librería FlipImageView de castorflex.
 
-Consulta la !(pagina del proyecto){http://pezbailarin.github.io/Combat-Commander} para más información
+Consulta la [pagina del proyecto](http://pezbailarin.github.io/Combat-Commander) para más información
