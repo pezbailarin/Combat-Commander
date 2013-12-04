@@ -9,4 +9,11 @@ Está realizada únicamente con fines educativos, para aprender a hacer programa
 
 Utiliza la librería FlipImageView de castorflex.
 
+### Funcionamiento
+
+Elige nación, año, y dado y pulsa el botón. La aplicación muestra únicamente las unidades o armas que puedes elegir como refuerzo. 
+Recuerda que una radio no es una unidad.
+
+![](https://raw.github.com/pezbailarin/Combat-Commander/gh-pages/images/framed_cc_screenshot.png)
+
 Consulta la [pagina del proyecto](http://pezbailarin.github.io/Combat-Commander) para más información
