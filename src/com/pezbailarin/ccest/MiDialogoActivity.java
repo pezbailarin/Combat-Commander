@@ -86,19 +86,19 @@ public class MiDialogoActivity extends Activity implements FlipImageView.OnFlipL
 
 	@Override
 	public void onClick(FlipImageView view) {
-		// TODO Auto-generated method stub
+		// 
 		
 	}
 
 	@Override
 	public void onFlipStart(FlipImageView view) {
-		// TODO Auto-generated method stub
+		// 
 		
 	}
 
 	@Override
 	public void onFlipEnd(FlipImageView view) {
-		// TODO Auto-generated method stub
+		// 
 		
 	}
 

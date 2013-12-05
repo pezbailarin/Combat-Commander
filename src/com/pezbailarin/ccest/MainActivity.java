@@ -1,6 +1,4 @@
-//TODO: cambiar las imágenes por otras mas grandes, reducirlas en el listview pero no en el dialogo ampliado
-//TODO: añadir imágenes dobles para los wpn team + weapon; mostrarlas desplegadas en el dialogo
-//TODO: mostrar las armas americanas con las unidades francesas que las usan
+
 
 package com.pezbailarin.ccest;
 
@@ -20,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
@@ -76,21 +73,14 @@ public class MainActivity extends Activity {
 					long id) {
 				//no quiero mostrar el diálogo cuando no hay unidades elegibles
 				if(Detalles.get(position).getCoste()>0) {
-					//Toast.makeText(getApplicationContext(), "nombre "+Detalles.get(position).getNombre(), Toast.LENGTH_LONG).show();
+
 					Intent intent=new Intent(getApplicationContext(), MiDialogoActivity.class);
 					intent.putExtra("NOMBRE", Detalles.get(position).getNombre());
 					intent.putExtra("EXTRAS", Detalles.get(position).getExtra());
-					//veamos si el icono es doble
 					int ico=Detalles.get(position).getIcon();
-					String name = getResources().getResourceEntryName(ico);
-/*					//si la unidad termina en 'd' cambio el icono
-					if(name.endsWith("d")==true) {
-						name=name.substring(0, name.length()-1);
-						ico=getResources().getIdentifier(name, "drawable", getPackageName());						
-					}*/
-							
 					intent.putExtra("ICONO", ico);
 					intent.putExtra("COSTE", Detalles.get(position).getCoste());
+					
 					startActivity(intent);			    
 				}
 			}
@@ -127,9 +117,9 @@ public class MainActivity extends Activity {
 					unidad.setIcon(R.drawable.stf11bd);
 				}
 				if (pais==2 && i==11) {unidad.setExtra(getString(R.string.use_the_american_version_of_the_indicated_weapon));}
-				if(pais ==2 && i==12 && dado==7){unidad.setExtra("Belgian only");}
-				if(pais==2 && i==12 && dado ==9){unidad.setExtra("Polish only");}
-				if(pais==2 && i==13 && dado ==9){unidad.setExtra("French only");}
+				if(pais ==2 && i==12 && dado==7){unidad.setExtra(getString(R.string.belgian_only));}
+				if(pais==2 && i==12 && dado ==9){unidad.setExtra(getString(R.string.polish_only));}
+				if(pais==2 && i==13 && dado ==9){unidad.setExtra(getString(R.string.french_only));}
 				unidad.setNombre(SupportUnits[pais][i]);
 				unidad.setCoste(SupportTable[pais][dado][anyo][i]);
 				Detalles.add(unidad);
