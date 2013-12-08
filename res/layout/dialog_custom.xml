@@ -2,26 +2,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" 
-    android:background="#ffffff">
+    android:background="#ffffff"
+    android:orientation="vertical" >
 
-        <fr.castorflex.android.flipimageview.library.FlipImageView
-            xmlns:fiv="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/ivIconoDialogo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/bstgr"
-            fiv:flipDrawable="@drawable/bstgr"
-            fiv:flipDuration="500"
-            fiv:flipInterpolator="@android:anim/accelerate_interpolator"
-            fiv:flipRotations="y"
-            fiv:isAnimated="true"
-            fiv:isFlipped="false"
-            android:layout_alignParentLeft="true"
-        	android:layout_alignParentTop="true"
-        	android:padding="5dp" />  
-
-    
+    <fr.castorflex.android.flipimageview.library.FlipImageView
+        xmlns:fiv="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/ivIconoDialogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:padding="5dp"
+        android:src="@drawable/bstgr"
+        fiv:flipDrawable="@drawable/bstgr"
+        fiv:flipDuration="500"
+        fiv:flipInterpolator="@android:anim/accelerate_interpolator"
+        fiv:flipRotations="y"
+        fiv:isAnimated="true"
+        fiv:isFlipped="false" />
 
     <TextView
         android:id="@+id/txtNombreDialogo"
@@ -29,40 +27,40 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/ivIconoDialogo"
-        android:text="Large Text"
         android:padding="5dp"
+        android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-         <TextView
-             android:id="@+id/txtExtraDialogo"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_alignParentRight="true"
-             android:layout_below="@+id/txtNombreDialogo"
-             android:text="text placeholder"
-             android:paddingLeft="5dp"
-             android:textAppearance="?android:attr/textAppearanceSmall"
-             android:textColor="#777777" />
-         
-        <Button
-             android:id="@+id/dialogButtonOK"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_alignParentLeft="true"
-	         android:padding="10dp"
-             android:layout_below="@+id/txtExtraDialogo"
-             android:text="@string/_ok_" />
+    <TextView
+        android:id="@+id/txtExtraDialogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/txtNombreDialogo"
+        android:paddingLeft="5dp"
+        android:text="text placeholder"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#777777" />
 
-        <TextView
-            android:id="@+id/txtCosteDialogo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/txtExtraDialogo"
-            android:layout_alignParentRight="true"
-            android:padding="4dp"
-            android:text="6"
-            android:textColor="#8B0000"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+    <Button
+        android:id="@+id/dialogButtonOK"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/txtExtraDialogo"
+        android:padding="10dp"
+        android:text="@string/_ok_" />
+
+    <TextView
+        android:id="@+id/txtCosteDialogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/txtExtraDialogo"
+        android:layout_alignParentRight="true"
+        android:padding="4dp"
+        android:text="6"
+        android:textColor="#8B0000"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

@@ -14,5 +14,16 @@
     <string name="belgian_only">Belgian only</string>
     <string name="polish_only">Polish only</string>
     <string name="french_only">French only</string>
+    <string name="Germany">Germany</string>
+    <string name="USA">USA</string>
+    <string name="Rusia">Russia</string>
+    <string name="UK">UK</string>
+    <string name="Francia">France</string>
+    <string name="Italia">Italy</string>
+    <string name="and_axis_minor">and axis minors</string>
+    <string name="and_allied_minors">and allied minors</string>
+    <string name="and_commonwealth">and Commonwealth</string>
+    <string name="or">or</string>
+
 
 </resources>
