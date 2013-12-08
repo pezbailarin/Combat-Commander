@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">CCE tablas de apoyo</string>
+    <string name="go">Ok</string>
+    <string name="ninguna_unidad_disponible">No hay unidades disponibles</string>
+    <string name="year">Año:</string>
+    <string name="dado">Dado:</string>
+    <string name="nation">Nación:</string>
+    <string name="only_if_playing_a_finnish_oob">Sólo para OOB finlandés</string>
+    <string name="use_the_american_version_of_the_indicated_weapon">Usa arma americana</string>
+    <string name="title_activity_mi_dialogo">Detalles</string>
+    <string name="_ok_">" OK "</string>
+    <string name="belgian_only">Sólo con belgas</string>
+    <string name="polish_only">Sólo con polacos</string>
+    <string name="french_only">Sólo con franceses </string>
+    <string name="Germany">Alemania</string>
+    <string name="USA">USA</string>
+    <string name="Rusia">Rusia</string>
+    <string name="UK">Reino Unido</string>
+    <string name="Francia">Francia</string>
+    <string name="Italia">Italia</string>
+    <string name="and_axis_minor">y menores del eje</string>
+    <string name="and_allied_minors">y menores aliados</string>
+    <string name="and_commonwealth">y Commonwealth</string>
+    <string name="or">o</string>
+    
+
+</resources>
